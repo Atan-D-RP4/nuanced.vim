@@ -5,9 +5,7 @@ packages                                        \
   yay:gvim-git                                  \
   pacman:vim
 
-link                                            \
-  "$XDG_CONFIG_HOME/vim/init.vim"               \
-  "$XDG_CONFIG_HOME/vim/statusline.vim"
+link    "$XDG_CONFIG_HOME/vim/init.vim"
 link-to "$XDG_CONFIG_HOME/vim/colors" ./colors/*
 link-to "$XDG_CONFIG_HOME/vim/plugs" ./plugs/*
 link-to "$XDG_CONFIG_HOME/vim/mods" ./mods/*

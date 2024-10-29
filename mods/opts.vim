@@ -13,6 +13,9 @@ set nojoinspaces laststatus=2 ruler
 set showcmd smarttab nostartofline showmatch
 set switchbuf=uselast wildmenu 
 
+" Preffered line endings
+set ff=unix
+
 " Line number defaults
 set number relativenumber ruler
 
@@ -21,7 +24,7 @@ set mouse=a
 set mousehide
 
 " Don't show mode in the last line since we put it in the statusline
-set showmode=false
+set showmode
 
 " Show tabline
 set showtabline=2
@@ -39,10 +42,6 @@ augroup END
 set breakindent
 set breakindentopt=shift:4,min:20
 set showbreak=+++
-
-" Preffered line endings
-set ff=unix
-
 
 " Set preffered font for graphical vim displays
 set guifont=Meslo\ LG\ M\ DZ
@@ -128,7 +127,7 @@ set splitbelow splitright
 set list listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:␣
 
 " Preview substitutions live
-set inccommand=split
+"set inccommand=split
 
 set cursorline
 
@@ -170,7 +169,6 @@ endif
 
 " Set the statusline
 set lazyredraw
-set lazystatus=2
 
 let g:netrw_banner=0                                                           " configure netrw to be more dired like
 let g:netrw_fastbrowse=1                                                       " cache directory entries only when remote

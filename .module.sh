@@ -5,10 +5,13 @@ packages                                        \
   yay:gvim-git                                  \
   pacman:vim
 
-link    "$XDG_CONFIG_HOME/vim/init.vim"
+link                                            \
+  "$XDG_CONFIG_HOME/vim/init.vim"               \
+  "$XDG_CONFIG_HOME/vim/plugins.vim"            \
+
 link-to "$XDG_CONFIG_HOME/vim/colors" ./colors/*
-link-to "$XDG_CONFIG_HOME/vim/plugs" ./plugs/*
 link-to "$XDG_CONFIG_HOME/vim/mods" ./mods/*
+link-to "$XDG_CONFIG_HOME/vim/plugs" ./plugs/*
 
 if ! [ -e "$XDG_CONFIG_HOME/vim/autoload/plug.vim" ]; then
   info 'Installing VIM Plugged'

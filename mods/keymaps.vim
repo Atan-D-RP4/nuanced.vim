@@ -13,11 +13,6 @@ inoremap <C-U> <C-G>u<C-U>
 inoremap <Esc> <Esc><Esc>
 inoremap <C-c> <Esc><Esc>
 
-" Put in plugs/copilot.vim
-inoremap <C-L> <Plug>(copilot-accept-word)
-inoremap <C-E> <Plug>(copilot-accept-line)
-inoremap <C-H> <Plug>(copilot-suggest)
-
 " Deals with search highlighting for me
 nnoremap <silent><Esc> :noh<CR><ESC>
 
@@ -36,13 +31,6 @@ nnoremap <C-n> :ToggleNetrw<CR>
 " Keybinding for Toggling UndoTree -- put in plugs/undotree.vim
 nnoremap <leader>z :UndotreeToggle<CR>
 
-" Use fzf for file navigation -- put in plugs/fzf.vim
-nnoremap <leader>p  :Files<CR>
-nnoremap <leader>o  :Buffers<CR>
-nnoremap <leader>m  :Marks<CR>
-nnoremap <leader>l  :History<CR>
-nnoremap <leader>f  :Rg<CR>
-
 " LSP navigation
 nnoremap <leader>sl :LspDocumentSymbolSearch<CR>
 
@@ -50,7 +38,6 @@ nnoremap <leader>sl :LspDocumentSymbolSearch<CR>
 nnoremap <silent> <leader>] :bnext!<CR>
 nnoremap <silent> <leader>[ :bprevious!<CR>
 nnoremap <silent> <leader>d :bdelete! %<CR>
-nnoremap <silent> <leader>u :edit! #<CR>
 
 " Auto-expands braces
 inoremap (; (<CR>);<Esc>O
@@ -62,16 +49,14 @@ inoremap [, [<CR>],<Esc>O
 
 inoremap {<CR> {<CR>}<Esc>O
 
-imap <C-L> <Plug>(copilot-accept-word)
-
 " Keybindings for navigation
 nnoremap <silent> <S-w> b
 vnoremap <silent> <S-w> b
 
 " Keybinding for quicksaving
-nnoremap <silent> <C-S> :update<CR>
-inoremap <silent> <C-S> <Esc>:update <CR>
-vnoremap <silent> <C-S> <Esc>:update <CR>
+nnoremap <silent> <C-s> :update<CR>
+inoremap <silent> <C-s> <Esc>:update <CR>
+vnoremap <silent> <C-s> <Esc>:update <CR>
 
 " Keybindings for alt line movement.
 nnoremap <silent> <C-k> :call MoveLines(-2)<CR>
@@ -107,9 +92,3 @@ nnoremap <silent> <leader>: :call SkyBison("")<CR>
 
 " Keymap for repeating ':' commands
 nnoremap <silent> <leader>; :<Up><CR>
-
-" Remapping for vim-sneak -- put in plugs/sneak.vim
-nmap gs <Plug>Sneak_s
-nmap gS <Plug>Sneak_S
-vmap gs <Plug>Sneak_s
-vmap gS <Plug>Sneak_S

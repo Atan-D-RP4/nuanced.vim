@@ -110,6 +110,8 @@ if s:InstallVimPlug()
   call plug#begin(g:vim_home . '/plugins')
   
   " Load plugin configurations
+  call s:LoadPluginConfig('goyo.vim')
+  call s:LoadPluginConfig('wiki.vim')
   call s:LoadPluginConfig('sneak.vim')
   call s:LoadPluginConfig('yazi.vim')
   call s:LoadPluginConfig('fzf.vim')

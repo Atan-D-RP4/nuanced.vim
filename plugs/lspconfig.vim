@@ -5,8 +5,15 @@ let g:lsp_semantic_enabled = 1
 let g:lsp_diagnostics_virtual_text_align = "after"
 let g:lsp_use_event_queue = 1
 let g:lsp_log_verbose = 1
-let g:lsp_log_file = expand('$XDG_DATA_HOME/vim/lsp.log')
 let g:lsp_inlay_hints_enabled = 1
+let g:lsp_log_file = expand('$XDG_DATA_HOME/vim/lsp.log')
+
+if !filereadable(expand('$XDG_DATA_HOME/vim/lsp.log'))
+  call writefile([], g:lsp_log_file)
+endif
+
+let g:lsp_log_file = expand('$XDG_DATA_HOME/vim/lsp.log')
+
 
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'

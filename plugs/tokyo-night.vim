@@ -11,5 +11,5 @@ let g:tokyonight_menu_selection_background = 'blue'
 let g:tokyonight_transparent_background = 0
 
 " Autocmd to set colorscheme and syntax on after Plugin is loaded
-autocmd VimEnter * try | colorscheme tokyonight | catch | endtry
 autocmd VimEnter * syntax on
+autocmd VimEnter * try | colorscheme tokyonight | catch | endtry

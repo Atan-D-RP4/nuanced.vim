@@ -1,6 +1,6 @@
-Plug 'mbbill/undotree'
+Plug 'mbbill/undotree', { 'on' : 'UndotreeToggle' }
 
-nnoremap <geader>u :UndotreeToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 
 let g:netrw_banner=0                                                           " configure netrw to be more dired like
 let g:netrw_fastbrowse=1                                                       " cache directory entries only when remote

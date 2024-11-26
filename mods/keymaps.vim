@@ -88,7 +88,5 @@ nmap k gk
 vmap j gj
 vmap k gk
 
-nnoremap <silent> <leader>: :call SkyBison("")<CR>
-
 " Keymap for repeating ':' commands
 nnoremap <silent> <leader>; :<Up><CR>

@@ -1,4 +1,4 @@
-Plug 'github/copilot.vim'
+Plug 'github/copilot.vim', { 'on': 'InsertEnter' }
 
 
 " Put in plugs/copilot.vim

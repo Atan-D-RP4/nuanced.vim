@@ -1,6 +1,23 @@
+" List of ftplugins to load LSP for
+let g:lsp_fts = ['javascript', 'typescript', 'typescriptreact',
+            \ 'javascriptreact', 'json', 'yaml', 'html', 'css', 'scss', 'less',
+            \ 'graphql', 'markdown', 'lua', 'python', 'rust', 'go', 'java', 'php',
+            \ 'ruby', 'c', 'cpp', 'haskell', 'scala', 'kotlin', 'swift', 'dart',
+            \ 'elixir', 'vim', 'sh', 'bash', 'zsh', 'dockerfile', 'plaintext']
+
 " LSP and LanguageClient Plugins
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/vim-lsp', { 'for': g:lsp_fts }
+Plug 'mattn/vim-lsp-settings', { 'for': g:lsp_fts }
+
+Plug 'prabirshrestha/asyncomplete.vim', { 'for': g:lsp_fts }
+Plug 'prabirshrestha/asyncomplete-lsp.vim', { 'for': g:lsp_fts }
+
+Plug 'sheerun/vim-polyglot'
+
+" ALE
+Plug 'dense-analysis/ale', { 'for': g:lsp_fts }
+Plug 'rhysd/vim-lsp-ale', { 'for': g:lsp_fts }
+
 let g:lsp_semantic_enabled = 1
 let g:lsp_diagnostics_virtual_text_align = "after"
 let g:lsp_use_event_queue = 1
@@ -15,16 +32,8 @@ endif
 let g:lsp_log_file = expand('$XDG_DATA_HOME/vim/lsp.log')
 
 
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
 let g:async_complete_min_chars = 3
 let g:asyncomplete_auto_completeopt = 1
-
-Plug 'sheerun/vim-polyglot'
-
-" ALE
-Plug 'dense-analysis/ale'
-Plug 'rhysd/vim-lsp-ale'
 
 " LSP settings
 function! s:on_lsp_buffer_enabled() abort

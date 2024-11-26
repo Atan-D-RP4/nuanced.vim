@@ -1,4 +1,10 @@
-Plug 'junegunn/fzf.vim'
+let g:fzf_cmds = [
+      \ 'Files', 'GFiles', 'Buffers', 'Colors', 'Ag', 'Rg', 'RG', 'Lines', 'BLines', 'Tags', 'BTags', 
+      \ 'Changes', 'Marks', 'Jumps', 'Windows', 'Locate', 'History', 'Snippets', 'Commits', 'BCommits', 
+      \ 'Commands', 'Maps', 'Helptags', 'Filetypes'
+      \ ]
+
+Plug 'junegunn/fzf.vim', { 'on': g:fzf_cmds }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 if executable('rg')

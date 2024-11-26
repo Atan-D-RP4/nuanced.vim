@@ -106,21 +106,27 @@ endfunction
 
 " Main initialization
 if s:InstallVimPlug()
+  let g:plugin_specs = [
+      \ 'edit.vim',
+      \ 'goyo.vim',
+      \ 'wiki.vim',
+      \ 'sneak.vim',
+      \ 'yazi.vim',
+      \ 'fzf.vim',
+      \ 'git.vim',
+      \ 'copilot.vim',
+      \ 'lspconfig.vim',
+      \ 'quickscope.vim',
+      \ 'tokyo-night.vim',
+      \ 'tree.vim',
+      \ ]
   " Begin plugin declarations
   call plug#begin(g:vim_home . '/plugins')
   
   " Load plugin configurations
-  call s:LoadPluginConfig('goyo.vim')
-  call s:LoadPluginConfig('wiki.vim')
-  call s:LoadPluginConfig('sneak.vim')
-  call s:LoadPluginConfig('yazi.vim')
-  call s:LoadPluginConfig('fzf.vim')
-  call s:LoadPluginConfig('git.vim')
-  call s:LoadPluginConfig('copilot.vim')
-  call s:LoadPluginConfig('lspconfig.vim')
-  call s:LoadPluginConfig('quickscope.vim')
-  call s:LoadPluginConfig('tokyo-night.vim')
-  call s:LoadPluginConfig('tree.vim')
+  for plug in g:plugin_specs
+    call s:LoadPluginConfig(plug)
+  endfor
   
   " End plugin declarations
   call plug#end()
@@ -129,7 +135,7 @@ if s:InstallVimPlug()
   if s:PluginsNeedInstall()
     augroup PlugInstallGroup
       autocmd!
-      autocmd VimEnter * PlugInstall --sync | call s:WritePluginState() | source $MYVIMRC
+      autocmd VimEnter * PlugClean | PlugInstall --sync | call s:WritePluginState() | source $MYVIMRC
     augroup END
   endif
 endif

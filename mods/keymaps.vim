@@ -29,15 +29,19 @@ nnoremap <leader>' :terminal<CR>
 nnoremap <C-n> :ToggleNetrw<CR>
 
 " Keybinding for Toggling UndoTree -- put in plugs/undotree.vim
-nnoremap <leader>z :UndotreeToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " LSP navigation
 nnoremap <leader>sl :LspDocumentSymbolSearch<CR>
 
 " Keymaps for buffer-tabs
-nnoremap <silent> <leader>] :bnext!<CR>
-nnoremap <silent> <leader>[ :bprevious!<CR>
+nnoremap <silent> <Tab> :bnext!<CR>
+nnoremap <silent> <S-Tab> :bprevious!<CR>
 nnoremap <silent> <leader>d :bdelete! %<CR>
+
+" Write map for <leader>e that lists buffers and prompts for a buffer number and on keypress switches to that buffer
+nnoremap <silent> <leader>e :buffers<CR>:b!<Space>
+nnoremap <silent> <leader>q :buffers<CR>:bd!<Space>
 
 " Auto-expands braces
 inoremap (; (<CR>);<Esc>O
@@ -58,21 +62,8 @@ nnoremap <silent> <C-s> :update<CR>
 inoremap <silent> <C-s> <Esc>:update <CR>
 vnoremap <silent> <C-s> <Esc>:update <CR>
 
-" Keybindings for alt line movement.
-nnoremap <silent> <C-k> :call MoveLines(-2)<CR>
-nnoremap <silent> <C-j> :call MoveLines(+1)<CR>
-nnoremap <silent> <C-Up> :call MoveLines(-2)<CR>
-nnoremap <silent> <C-Down> :call MoveLines(+1)<CR>
-
-vnoremap <silent> <C-k> :call MoveVisualSelection(+1)<CR>
-vnoremap <silent> <C-j> :call MoveVisualSelection(-2)<CR>
-vnoremap <silent> <C-Up> :call MoveVisualSelection(-2)<CR>
-vnoremap <silent> <C-Down> :call MoveVisualSelection(+1)<CR>
-
-inoremap <silent> <C-k> <C-o>:m-2 .+<C-r>=v:count1<CR><CR>
-inoremap <silent> <C-j> <C-o>:m+ .+<C-r>=v:count1<CR><CR>
-inoremap <silent> <C-Up> <C-o>:m-2 .+<C-r>=v:count1<CR><CR>
-inoremap <silent> <C-Down> <C-o>:m+ .+<C-r>=v:count1<CR><CR>
+vnoremap <silent> K :m '<-2<CR>gv=gv
+vnoremap <silent> J :m '>+1<CR>gv=gv
 
 " Jump up the file lines
 nnoremap <silent> <C-q> <C-u>
@@ -90,3 +81,5 @@ vmap k gk
 
 " Keymap for repeating ':' commands
 nnoremap <silent> <leader>; :<Up><CR>
+
+tnoremap <C-\> <C-\><C-n>| " Enter normal mode

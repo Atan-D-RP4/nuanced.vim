@@ -37,7 +37,7 @@ nnoremap <leader>sl :LspDocumentSymbolSearch<CR>
 " Keymaps for buffer-tabs
 nnoremap <silent> <Tab> :bnext!<CR>
 nnoremap <silent> <S-Tab> :bprevious!<CR>
-nnoremap <silent> <leader>d :bdelete! %<CR>
+" nnoremap <silent> <leader>d :bdelete! %<CR>
 
 " Write map for <leader>e that lists buffers and prompts for a buffer number and on keypress switches to that buffer
 nnoremap <silent> <leader>e :buffers<CR>:b!<Space>

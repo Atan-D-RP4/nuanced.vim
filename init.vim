@@ -68,3 +68,5 @@ endif
 runtime! mods/*
 
 source $XDG_CONFIG_HOME/vim/plugs.vim                                        " Load vim plugin configuration
+
+packadd comment

@@ -11,6 +11,7 @@
 
 "" Statusline
 set laststatus=2                                                                " Enable statusline
+set lazyredraw
 
 "" Color highlighting groups
 " Define color scheme for the GUI, we use the equivalent term ANSI
@@ -148,3 +149,98 @@ augroup SetStslineline
   autocmd BufEnter,WinEnter * call ActivateStatusline()
   autocmd BufLeave,WinLeave * call DeactivateStatusline()
 augroup END
+
+" Tabline
+set showtabline=2                                                               " Enable tabline
+" Color definition
+let g:BufferlineColorGreen     = '#78bd65'
+let g:BufferlineColorYellow    = '#eead0e'
+let g:BufferlineColorRed       = '#ea3d54'
+let g:BufferlineColorBlack     = '#1c1d20'
+let g:BufferlineColorWhite     = '#cbccd1'
+let g:BufferlineColorGrey      = '#44464f'
+
+" Create highlight groups
+execute 'highlight BufferlineMode guifg=' . g:BufferlineColorBlack . ' ctermfg=234 guibg=' . g:BufferlineColorYellow . ' ctermbg=214'
+execute 'highlight BufferlineActive guifg=' . g:BufferlineColorWhite . ' guibg=' . g:BufferlineColorBlack
+execute 'highlight BufferlineInactive guifg=' . g:BufferlineColorGrey . ' guibg=' . g:BufferlineColorBlack
+execute 'highlight BufferlineModified guifg=' . g:BufferlineColorRed . ' guibg=' . g:BufferlineColorBlack
+
+" Truncate filename if too long
+function! TruncateFilename(filename, max_length)
+    if len(a:filename) > a:max_length
+        return a:filename[:a:max_length-3] . '...'
+    endif
+    return a:filename
+endfunction
+
+" Get buffer display name
+function! GetBufferDisplayName(bufnr)
+    " If no name, return [No Name]
+    if empty(bufname(a:bufnr))
+        return '[No Name]'
+    endif
+
+    " Get filename (tail)
+    let filename = fnamemodify(bufname(a:bufnr), ':t')
+
+    " Add directory hint for duplicate names
+    if count(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'fnamemodify(bufname(v:val), ":t")'), filename) > 1
+        let filename = fnamemodify(bufname(a:bufnr), ':h:t') . '/' . filename
+    endif
+
+    return filename
+endfunction
+
+" Custom bufferline rendering
+function! CustomBufferLine()
+    " List of listed buffers
+    let bufnums = filter(range(1, bufnr('$')), 'buflisted(v:val)')
+
+    " If no buffers, return empty
+    if empty(bufnums)
+        return ''
+    endif
+
+    let s:bufferline = ''
+
+    " Iterate through buffers
+    for bufnr in bufnums
+        " Determine if this is the current buffer
+        let is_current = bufnr == bufnr('%')
+
+        " Highlight based on current buffer status
+        let hl = is_current ? '%#TablineSel#' : '%#TablineNormal#'
+
+        " Get filename
+        let filename = TruncateFilename(GetBufferDisplayName(bufnr), 20)
+
+        " Modified indicator
+        let modified = getbufvar(bufnr, '&modified') ? '+ ' : ''
+
+        " Construct buffer label
+        let label = modified . filename
+
+        " Add to bufferline with buffer switch command
+        let s:bufferline .= hl . ' ' . label . ' '
+    endfor
+
+    " Fill remaining space
+    let s:bufferline .= '%#TabLineFill#%='
+
+    return s:bufferline
+endfunction
+
+" Set tabline to our custom buffer line
+set tabline=%!CustomBufferLine()
+set showtabline=2
+
+" Optional configuration function (future-proofing)
+function! BufferlineSetup(...)
+    if a:0 > 0
+        let g:bufferline_config = extend(get(g:, 'bufferline_config', {}), a:1)
+    endif
+endfunction
+
+" Expose configuration command
+command! -nargs=? BufferlineConfig call BufferlineSetup(<args>)

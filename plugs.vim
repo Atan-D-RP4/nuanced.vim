@@ -107,6 +107,7 @@ endfunction
 " Main initialization
 if s:InstallVimPlug()
   let g:plugin_specs = [
+      \ 'which-key.vim',
       \ 'edit.vim',
       \ 'goyo.vim',
       \ 'wiki.vim',

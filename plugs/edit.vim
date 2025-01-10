@@ -6,3 +6,7 @@ Plug 'tpope/vim-surround'
 " Plug 'pelodelfuego/vim-swoop'
 
 Plug 'markonm/traces.vim'
+
+Plug 'moll/vim-bbye'
+
+nnoremap <silent> <leader>d :Bdelete!<CR>

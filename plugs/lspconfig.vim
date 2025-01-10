@@ -3,7 +3,7 @@ let g:lsp_fts = ['javascript', 'typescript', 'typescriptreact',
             \ 'javascriptreact', 'json', 'yaml', 'html', 'css', 'scss', 'less',
             \ 'graphql', 'markdown', 'lua', 'python', 'rust', 'go', 'java', 'php',
             \ 'ruby', 'c', 'cpp', 'haskell', 'scala', 'kotlin', 'swift', 'dart',
-            \ 'elixir', 'vim', 'sh', 'bash', 'zsh', 'dockerfile', 'plaintext']
+            \ 'elixir', 'vim', 'sh', 'bash', 'zsh', 'dockerfile']
 
 " LSP and LanguageClient Plugins
 Plug 'prabirshrestha/vim-lsp', { 'for': g:lsp_fts }

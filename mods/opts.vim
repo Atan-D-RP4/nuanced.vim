@@ -2,7 +2,7 @@
 " These are some of the options enabled by default in Neovim
 " These are options believed by many Vim users to be essential.
 " For more information, see `:h vim_diff.txt` in Neovim
-" I will skip the 
+" I will skip the
 set title titlestring=%t%(\ %M%)%(\ (%{substitute(getcwd(),\ $HOME,\ '~',\ '')})%)%(\ %a%) titleold=
 
 " Editor Options (Set in tokyo-night.vim)
@@ -18,22 +18,22 @@ endif
 
 filetype on
 
-set autoindent 
-set autoread 
+set autoindent
+set autoread
 set background=dark
 set backspace=indent,eol,start belloff=all
-set display=lastline 
+set display=lastline
 set hidden
-set history=10000 
+set history=10000
 set nojoinspaces
-set showcmd 
-set nostartofline 
+set showcmd
+set nostartofline
 set showmatch
-set switchbuf=uselast 
+set switchbuf=uselast
 
 " Line number defaults
-set number 
-set relativenumber 
+set number
+set relativenumber
 set ruler
 
 " Enable mouse support
@@ -42,9 +42,6 @@ set mousehide
 
 " Don't show mode in the last line since we put it in the statusline
 set showmode
-
-" Show tabline
-set showtabline=2
 
 " Sync clipboard between OS and Neovim.
 "  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -63,7 +60,7 @@ set showbreak=+++
 " Set preffered font for graphical vim displays
 set guifont=Meslo\ LG\ M\ DZ
 
-" Fix bizarre eol behaviour in visual mode. See 
+" Fix bizarre eol behaviour in visual mode. See
 " [[https://vi.stackexchange.com/questions/12607/extend-visual-selection-til-the-last-character-on-the-line-excluding-the-new-li][here]]
 set selection=old
 
@@ -93,7 +90,7 @@ endif
 
 
 " Save undo history
-set undofile 
+set undofile
 set undolevels=1000
 set undoreload=10000
 
@@ -102,7 +99,7 @@ set swapfile
 set backup
 
 " Case-insensitive search unless \C or one or more capital letters are used
-set ignorecase 
+set ignorecase
 set smartcase
 
 " Tab and indent settings
@@ -111,10 +108,10 @@ set softtabstop=0
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set smarttab 
+set smarttab
 
 " Enable Wildmenu and set its defaults
-set wildmenu 
+set wildmenu
 set wildmode=longest:full,full
 set wildoptions=pum,tagfile,fuzzy
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.pyo,*.exe,*.dll,*.obj,*.o,*.a,*.lib,*.so,*.dylib,*.class,*.jar,*.war
@@ -129,15 +126,15 @@ set ttimeoutlen=10          " Wait up to 100ms after Esc for special key
 set timeoutlen=1000         " Time out for key codes
 
 " Defaults for opening splits
-set splitbelow 
+set splitbelow
 set splitright
 
 " Set how vim will display whitespace
-set list 
+set list
 set listchars=tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:␣
 
 " Preview substitutions live
-"set inccommand=split
+" set inccommand=split
 
 set cursorline
 
@@ -169,9 +166,7 @@ if has("cscope")
 endif
 
 " Set the statusline
-set laststatus=2 
-set lazyredraw
-set shortmess+=I                                                               " disable the default startup message
+set shortmess+=sI                                                               " disable the default startup message
 
 set whichwrap+=<,>,h,l,[,]                                                     " move to previous or next line when moving back at eol
 set guifont=Meslo\ LG\ M\ DZ                                                   " set preffered font for graphical vim displays
@@ -188,5 +183,12 @@ else
   set viminfo='250,\"100,:20,%,n$XDG_DATA_HOME/vim/viminfo
 endif
 
+if executable('/bin/fish')
+  set shell=/bin/fish
+else
+  set shell=/bin/bash
+endif
+
+set termguicolors
 
 " vim: ts=2 sts=2 sw=2 et

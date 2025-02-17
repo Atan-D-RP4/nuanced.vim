@@ -4,6 +4,8 @@ Plug 'tpope/vim-surround'
 
 " Plugin for better refactoring and search & replace
 " Plug 'pelodelfuego/vim-swoop'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-pack/nvim-spectre'
 
 Plug 'markonm/traces.vim'
 

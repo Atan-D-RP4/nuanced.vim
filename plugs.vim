@@ -10,7 +10,7 @@ function! s:InstallVimPlug() abort
   if !filereadable(g:plug_path)
     echo "Installing vim-plug..."
     silent execute '!curl -fLo ' . g:plug_path . ' --create-dirs ' . g:plug_url
-    
+
     if filereadable(g:plug_path)
       echo "vim-plug installed successfully. Please restart vim."
       let g:plug_just_installed = 1
@@ -26,11 +26,11 @@ endfunction
 " Function to source plugin configuration files
 function! s:LoadPluginConfig(plug_file) abort
   let l:full_path = g:vim_home . '/plugs/' . a:plug_file
-  
+
   if filereadable(l:full_path)
     let l:prev_plugins = exists('g:plugs') ? len(g:plugs) : 0
     execute 'source ' . l:full_path
-    
+
     " Track newly added plugins
     if exists('g:plugs')
       let l:curr_plugins = len(g:plugs)
@@ -66,21 +66,21 @@ function! s:PluginsChanged() abort
   if exists('g:plug_just_installed')
     return 1
   endif
-  
+
   " Skip if g:plugs doesn't exist (no plugins configured)
   if !exists('g:plugs')
     return 0
   endif
-  
+
   " Get previous state
   let l:previous_plugins = s:ReadPluginState()
   let l:current_plugins = sort(keys(g:plugs))
-  
+
   " If no previous state exists, consider it changed
   if empty(l:previous_plugins)
     return 1
   endif
-  
+
   " Compare current and previous states
   return string(l:previous_plugins) !=# string(l:current_plugins)
 endfunction
@@ -91,7 +91,7 @@ function! s:PluginsNeedInstall() abort
   if s:PluginsChanged()
     return 1
   endif
-  
+
   " Check for any missing plugins
   if exists('g:plugs')
     for [name, spec] in items(g:plugs)
@@ -100,7 +100,7 @@ function! s:PluginsNeedInstall() abort
       endif
     endfor
   endif
-  
+
   return 0
 endfunction
 
@@ -123,20 +123,20 @@ if s:InstallVimPlug()
       \ ]
   " Begin plugin declarations
   call plug#begin(g:vim_home . '/plugins')
-  
+
   " Load plugin configurations
   for plug in g:plugin_specs
     call s:LoadPluginConfig(plug)
   endfor
-  
+
   " End plugin declarations
   call plug#end()
-  
+
   " Auto-install plugins if needed
   if s:PluginsNeedInstall()
     augroup PlugInstallGroup
       autocmd!
-      autocmd VimEnter * PlugClean | PlugInstall --sync | call s:WritePluginState() | source $MYVIMRC
+      autocmd VimEnter * PlugClean | PlugInstall --sync | call s:WritePluginState() | source $MYVIMRC | q
     augroup END
   endif
 endif
